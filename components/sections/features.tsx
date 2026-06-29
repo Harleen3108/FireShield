@@ -61,19 +61,21 @@ export function Features() {
           subtitle="One integrated platform replacing a patchwork of radios, spreadsheets, and disconnected maps."
         />
 
-        <StaggerGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="mt-10 grid grid-cols-3 gap-3 sm:mt-14 sm:gap-6 lg:grid-cols-3">
           {features.map((f) => (
             <motion.div
               key={f.title}
               variants={staggerItem}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all hover:border-ember/40"
+              className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] p-3 text-center transition-all hover:border-ember/40 sm:rounded-2xl sm:p-6 sm:text-left lg:p-7"
             >
               <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-ember/50 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-ember/10 text-ember ring-1 ring-ember/20 transition-transform group-hover:scale-110">
-                <f.icon className="h-6 w-6" />
+              <span className="mx-auto grid h-9 w-9 place-items-center rounded-lg bg-ember/10 text-ember ring-1 ring-ember/20 transition-transform group-hover:scale-110 sm:mx-0 sm:h-11 sm:w-11 sm:rounded-xl lg:h-12 lg:w-12">
+                <f.icon className="h-5 w-5 sm:h-6 sm:w-6" />
               </span>
-              <h3 className="mt-5 text-lg font-semibold text-white">{f.title}</h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-slate-400">
+              <h3 className="mt-2.5 text-[13px] font-semibold leading-tight text-white sm:mt-5 sm:text-base lg:text-lg">
+                {f.title}
+              </h3>
+              <p className="mt-2.5 hidden text-sm leading-relaxed text-slate-400 sm:block">
                 {f.description}
               </p>
             </motion.div>

@@ -2,9 +2,12 @@
 
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, CheckCircle2, Send } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "../ui/button";
 import { Reveal } from "../ui/reveal";
+
+// WhatsApp number that receives form submissions (country code 91 + number)
+const WHATSAPP_NUMBER = "917743040191";
 
 const fields = [
   { name: "name", label: "Name", type: "text", placeholder: "Full name", required: true },
@@ -15,9 +18,9 @@ const fields = [
 ];
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "partnerships@fireshield.in" },
-  { icon: Phone, label: "Phone", value: "+91 832 000 0000" },
-  { icon: MapPin, label: "Address", value: "FireShield Command Center, Panaji, Goa 403001, India" },
+  { icon: Mail, label: "Email", value: "partnerships@fireshield.in", href: "mailto:partnerships@fireshield.in" },
+  { icon: Phone, label: "Phone", value: "+91 77430 40191", href: "tel:+917743040191" },
+  { icon: MapPin, label: "Address", value: "FireShield Command Center, Panaji, Goa 403001, India", href: undefined },
 ];
 
 export function Contact() {
@@ -25,6 +28,22 @@ export function Contact() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const val = (key: string) => ((data.get(key) as string) || "").trim() || "—";
+
+    const text = [
+      "*New FireShield Demo Request*",
+      "",
+      `*Name:* ${val("name")}`,
+      `*Department:* ${val("department")}`,
+      `*State:* ${val("state")}`,
+      `*Phone:* ${val("phone")}`,
+      `*Email:* ${val("email")}`,
+      `*Message:* ${val("message")}`,
+    ].join("\n");
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
@@ -55,11 +74,20 @@ export function Contact() {
                 >
                   <CheckCircle2 className="h-12 w-12 text-india-green" />
                   <h3 className="text-lg font-semibold text-white">
-                    Request received
+                    Opening WhatsApp…
                   </h3>
                   <p className="max-w-sm text-sm text-slate-400">
-                    Thank you. Our partnerships team will reach out within one
-                    business day to schedule your demo.
+                    Your details are ready in a WhatsApp message to our team —
+                    just press send. If it didn&apos;t open,{" "}
+                    <a
+                      href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-india-green underline"
+                    >
+                      tap here
+                    </a>
+                    .
                   </p>
                 </motion.div>
               ) : (
@@ -104,8 +132,8 @@ export function Contact() {
                     />
                   </div>
                   <Button type="submit" variant="primary" size="lg" className="w-full">
-                    Request a Demo
-                    <Send className="h-4 w-4" />
+                    Send via WhatsApp
+                    <MessageCircle className="h-4 w-4" />
                   </Button>
                 </form>
               )}
@@ -135,9 +163,18 @@ export function Contact() {
                       <div className="text-xs uppercase tracking-wide text-slate-500">
                         {c.label}
                       </div>
-                      <div className="mt-0.5 text-sm font-medium text-white">
-                        {c.value}
-                      </div>
+                      {c.href ? (
+                        <a
+                          href={c.href}
+                          className="mt-0.5 block text-sm font-medium text-white transition-colors hover:text-ember"
+                        >
+                          {c.value}
+                        </a>
+                      ) : (
+                        <div className="mt-0.5 text-sm font-medium text-white">
+                          {c.value}
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}

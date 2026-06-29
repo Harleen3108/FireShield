@@ -43,7 +43,7 @@ export function Hero() {
       </div>
 
       <div className="container relative pb-16 pt-2 md:pb-20">
-        <div className="grid min-h-[56vh] items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-10">
+        <div className="grid items-center gap-10 sm:gap-12 lg:min-h-[56vh] lg:grid-cols-[1fr_1.05fr] lg:gap-10">
           {/* Left: copy */}
           <div className="text-center lg:text-left">
             <motion.div

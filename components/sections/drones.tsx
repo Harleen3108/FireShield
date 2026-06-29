@@ -43,7 +43,7 @@ export function Drones() {
           subtitle="A two-tier autonomous fleet — one to find the fire, one to fight it — designed and assembled in India."
         />
 
-        <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-2">
+        <StaggerGroup className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-6">
           {drones.map((d) => {
             const accent = d.accent === "ember" ? "ember" : "alert";
             const Schematic = d.Schematic;
@@ -64,32 +64,39 @@ export function Drones() {
                   <div className="aspect-[2/1]">
                     <Schematic />
                   </div>
-                  <span className="absolute right-4 top-4 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-slate-400 backdrop-blur">
+                  <span className="absolute right-2 top-2 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[8px] font-medium uppercase tracking-wide text-slate-400 backdrop-blur sm:right-4 sm:top-4 sm:px-3 sm:py-1 sm:text-[11px]">
                     Made in India
                   </span>
                   <span
-                    className={`absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-xl ring-1 backdrop-blur ${
+                    className={`absolute left-2 top-2 grid h-8 w-8 place-items-center rounded-lg ring-1 backdrop-blur sm:left-4 sm:top-4 sm:h-11 sm:w-11 sm:rounded-xl ${
                       accent === "ember"
                         ? "bg-ember/10 text-ember ring-ember/25"
                         : "bg-alert/10 text-alert ring-alert/25"
                     }`}
                   >
-                    <d.icon className="h-5 w-5" />
+                    <d.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </span>
                 </div>
 
-                <div className="relative p-8">
-                  <h3 className="text-2xl font-bold text-white">{d.name}</h3>
-                  <p className="mt-2 text-sm text-slate-400">{d.tagline}</p>
+                <div className="relative p-4 sm:p-8">
+                  <h3 className="text-base font-bold leading-tight text-white sm:text-2xl">
+                    {d.name}
+                  </h3>
+                  <p className="mt-1 text-xs text-slate-400 sm:mt-2 sm:text-sm">
+                    {d.tagline}
+                  </p>
 
-                  <dl className="mt-6 grid grid-cols-3 gap-3 border-t border-white/10 pt-6">
+                  <dl className="mt-4 grid grid-cols-1 gap-2 border-t border-white/10 pt-4 sm:mt-6 sm:grid-cols-3 sm:gap-3 sm:pt-6">
                     {d.specs.map((s) => (
-                      <div key={s.label}>
-                        <dt className="flex items-center gap-1.5 text-xs text-slate-500">
+                      <div
+                        key={s.label}
+                        className="flex items-center justify-between sm:block"
+                      >
+                        <dt className="flex items-center gap-1.5 text-[11px] text-slate-500 sm:text-xs">
                           <s.icon className="h-3.5 w-3.5" />
                           {s.label}
                         </dt>
-                        <dd className="mt-1 text-sm font-semibold text-white">
+                        <dd className="text-right text-xs font-semibold text-white sm:mt-1 sm:text-left sm:text-sm">
                           {s.value}
                         </dd>
                       </div>

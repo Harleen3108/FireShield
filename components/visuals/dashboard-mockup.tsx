@@ -56,27 +56,47 @@ export function DashboardMockup() {
         </div>
 
         <div className="grid grid-cols-5">
-          {/* map panel */}
-          <div className="relative col-span-3 border-r border-white/10">
-            <GisMap className="aspect-[4/3]" />
-            <div className="absolute left-3 top-3 rounded-md bg-black/40 px-2 py-1 text-[10px] font-medium text-slate-300 backdrop-blur">
-              GIS · Live Hotspots
+          {/* map + live feed panel */}
+          <div className="relative col-span-3 flex flex-col border-r border-white/10">
+            {/* GIS map */}
+            <div className="relative">
+              <GisMap className="aspect-[4/3]" />
+              <div className="absolute left-2.5 top-2.5 rounded-md bg-black/40 px-2 py-1 text-[9px] font-medium text-slate-300 backdrop-blur sm:text-[10px]">
+                GIS · Live Hotspots
+              </div>
+              <div className="absolute bottom-2 left-2.5 flex flex-wrap gap-x-2 gap-y-0.5 text-[9px] text-slate-300">
+                <span className="flex items-center gap-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-alert" /> Critical
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-ember" /> Active
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-sky-400" /> Watch
+                </span>
+              </div>
             </div>
-            <div className="absolute bottom-3 left-3 flex gap-3 text-[10px] text-slate-300">
-              <span className="flex items-center gap-1">
-                <span className="h-2 w-2 rounded-full bg-alert" /> Critical
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="h-2 w-2 rounded-full bg-ember" /> Active
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="h-2 w-2 rounded-full bg-sky-400" /> Watch
+
+            {/* live drone feed — fills the vacant vertical space */}
+            <div className="relative min-h-[120px] flex-1 overflow-hidden border-t border-white/10">
+              <video
+                src="/img/phone-clean.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/70 to-transparent" />
+              <span className="absolute left-2 top-2 flex items-center gap-1 rounded bg-black/50 px-1.5 py-0.5 text-[9px] font-medium text-white backdrop-blur">
+                <span className="h-1.5 w-1.5 rounded-full bg-alert motion-safe:animate-pulse" />
+                Drone Feed · Live
               </span>
             </div>
           </div>
 
           {/* side panel */}
-          <div className="col-span-2 flex flex-col gap-3 p-3.5">
+          <div className="col-span-2 flex flex-col gap-3 p-2.5 sm:p-3.5">
             <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
               <Activity className="h-3.5 w-3.5 text-ember" />
               Active Incidents
@@ -89,18 +109,18 @@ export function DashboardMockup() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.7 + i * 0.15 }}
-                  className="rounded-lg border border-white/10 bg-white/[0.03] p-2.5"
+                  className="rounded-lg border border-white/10 bg-white/[0.03] p-2"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-semibold text-white">
+                  <div className="flex items-center justify-between gap-1.5">
+                    <span className="whitespace-nowrap text-[11px] font-semibold text-white">
                       {inc.id}
                     </span>
-                    <span className={`flex items-center gap-1 text-[10px] font-medium ${inc.color}`}>
-                      <span className={`h-1.5 w-1.5 rounded-full ${inc.dot}`} />
+                    <span className={`flex items-center gap-1 whitespace-nowrap text-[9px] font-medium sm:text-[10px] ${inc.color}`}>
+                      <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${inc.dot}`} />
                       {inc.level}
                     </span>
                   </div>
-                  <div className="mt-0.5 text-[10px] text-slate-500">{inc.area}</div>
+                  <div className="mt-0.5 truncate text-[10px] text-slate-500">{inc.area}</div>
                 </motion.div>
               ))}
             </div>
@@ -111,14 +131,16 @@ export function DashboardMockup() {
                 <Plane className="h-3.5 w-3.5 text-ember" />
                 Scanner Glider · SG-02
               </div>
-              <div className="mt-2.5 grid grid-cols-3 gap-2">
+              <div className="mt-2 space-y-1.5">
                 {telemetry.map((t) => (
-                  <div key={t.label}>
-                    <t.icon className="h-3 w-3 text-slate-500" />
-                    <div className="mt-1 text-[11px] font-semibold text-white">
+                  <div key={t.label} className="flex items-center justify-between gap-2">
+                    <span className="flex items-center gap-1.5 text-[10px] text-slate-500">
+                      <t.icon className="h-3 w-3 shrink-0" />
+                      {t.label}
+                    </span>
+                    <span className="whitespace-nowrap text-[11px] font-semibold text-white">
                       {t.value}
-                    </div>
-                    <div className="text-[9px] text-slate-500">{t.label}</div>
+                    </span>
                   </div>
                 ))}
               </div>

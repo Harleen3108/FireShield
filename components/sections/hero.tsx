@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Activity, Plane, Timer, ShieldCheck } from "lucide-react";
 import { Button } from "../ui/button";
 import { Counter } from "../ui/counter";
 import { DashboardMockup } from "../visuals/dashboard-mockup";
+import { VideoModal } from "../ui/video-modal";
 
 const stats = [
   { icon: Activity, to: 6, label: "Active Incidents" },
@@ -24,6 +26,8 @@ const fadeUp = {
 };
 
 export function Hero() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <section id="home" className="relative overflow-hidden pt-24 md:pt-28">
       {/* Photographic background */}
@@ -98,7 +102,12 @@ export function Hero() {
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
-              <Button variant="ghost" size="lg" className="w-full bg-base-900/40 backdrop-blur sm:w-auto">
+              <Button
+                variant="ghost"
+                size="lg"
+                onClick={() => setVideoOpen(true)}
+                className="w-full bg-base-900/40 backdrop-blur sm:w-auto"
+              >
                 <Play className="h-4 w-4" />
                 Watch Demo
               </Button>
@@ -134,6 +143,8 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
+
+      <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} />
     </section>
   );
 }

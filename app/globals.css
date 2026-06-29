@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-white/10;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base-900 text-slate-200 antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 107, 43, 0.12), transparent),
+      radial-gradient(ellipse 60% 50% at 80% 110%, rgba(19, 32, 58, 0.6), transparent);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-rajdhani), var(--font-poppins), sans-serif;
+    letter-spacing: 0;
+  }
+
+  ::selection {
+    @apply bg-ember/30 text-white;
+  }
+}
+
+@layer components {
+  /* Thin Indian tricolor highlight strip */
+  .tricolor-strip {
+    background: linear-gradient(
+      90deg,
+      #ff9933 0%,
+      #ff9933 33.33%,
+      #ffffff 33.33%,
+      #ffffff 66.66%,
+      #138808 66.66%,
+      #138808 100%
+    );
+  }
+
+  .section-pad {
+    @apply py-20 md:py-28;
+  }
+
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-sm border border-white/10;
+  }
+
+  .text-gradient-ember {
+    @apply bg-gradient-to-r from-ember via-ember-light to-alert bg-clip-text text-transparent;
+  }
+}
+
+/* Animated heatmap / fire glow used in hero */
+.hero-heatmap {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(229, 62, 62, 0.25), transparent 35%),
+    radial-gradient(circle at 70% 70%, rgba(255, 107, 43, 0.3), transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(255, 153, 51, 0.2), transparent 45%);
+  filter: blur(20px);
+  animation: heatmap-shift 12s ease-in-out infinite alternate;
+}
+
+@keyframes heatmap-shift {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Subtle grid overlay */
+.grid-overlay {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -38,7 +38,7 @@ export function Navbar() {
         )}
       >
         <nav className="container flex h-16 items-center justify-between">
-          <a href="#home" aria-label="FireShield home">
+          <a href="#home" aria-label="Avani Skyops home">
             <Logo />
           </a>
 

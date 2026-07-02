@@ -114,7 +114,9 @@ export function VideoModal({
               onClick={togglePlay}
               onTimeUpdate={(e) => {
                 const v = e.currentTarget;
-                setProgress(v.duration ? (v.currentTime / v.duration) * 100 : 0);
+                setProgress(
+                  v.duration ? (v.currentTime / v.duration) * 100 : 0,
+                );
               }}
               onPlay={() => setPlaying(true)}
               onPause={() => setPlaying(false)}
@@ -160,7 +162,7 @@ export function VideoModal({
               </div>
 
               <span className="hidden shrink-0 text-xs font-medium text-slate-400 sm:block">
-                FireShield Demo
+                Avani Skyops Demo
               </span>
             </div>
           </motion.div>

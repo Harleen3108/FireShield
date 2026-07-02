@@ -37,7 +37,7 @@ export function Operations() {
         <SectionHeading
           eyebrow="In the Field"
           title="From the command center to the frontline"
-          subtitle="FireShield connects every layer of the response — ground crews, aerial assets, and AI — into one coordinated operation."
+          subtitle="Avani Skyops connects every layer of the response — ground crews, aerial assets, and AI — into one coordinated operation."
         />
 
         <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-3">
@@ -62,7 +62,9 @@ export function Operations() {
               </div>
               <div className="relative -mt-10 p-6">
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-lg font-semibold text-white">{c.title}</h3>
+                  <h3 className="text-lg font-semibold text-white">
+                    {c.title}
+                  </h3>
                   <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-slate-500 transition-colors group-hover:text-ember" />
                 </div>
                 <p className="mt-2.5 text-sm leading-relaxed text-slate-400">

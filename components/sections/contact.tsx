@@ -10,17 +10,62 @@ import { Reveal } from "../ui/reveal";
 const WHATSAPP_NUMBER = "917743040191";
 
 const fields = [
-  { name: "name", label: "Name", type: "text", placeholder: "Full name", required: true },
-  { name: "department", label: "Department", type: "text", placeholder: "e.g. Fire & Emergency Services", required: true },
-  { name: "state", label: "State", type: "text", placeholder: "e.g. Goa", required: true },
-  { name: "phone", label: "Phone", type: "tel", placeholder: "+91 ", required: true },
-  { name: "email", label: "Email", type: "email", placeholder: "you@dept.gov.in", required: true },
+  {
+    name: "name",
+    label: "Name",
+    type: "text",
+    placeholder: "Full name",
+    required: true,
+  },
+  {
+    name: "department",
+    label: "Department",
+    type: "text",
+    placeholder: "e.g. Fire & Emergency Services",
+    required: true,
+  },
+  {
+    name: "state",
+    label: "State",
+    type: "text",
+    placeholder: "e.g. Goa",
+    required: true,
+  },
+  {
+    name: "phone",
+    label: "Phone",
+    type: "tel",
+    placeholder: "+91 ",
+    required: true,
+  },
+  {
+    name: "email",
+    label: "Email",
+    type: "email",
+    placeholder: "you@dept.gov.in",
+    required: true,
+  },
 ];
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "partnerships@fireshield.in", href: "mailto:partnerships@fireshield.in" },
-  { icon: Phone, label: "Phone", value: "+91 77430 40191", href: "tel:+917743040191" },
-  { icon: MapPin, label: "Address", value: "FireShield Command Center, Panaji, Goa 403001, India", href: undefined },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "partnerships@avaniskyops.in",
+    href: "mailto:partnerships@avaniskyops.in",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 77430 40191",
+    href: "tel:+917743040191",
+  },
+  {
+    icon: MapPin,
+    label: "Address",
+    value: "Avani Skyops Command Center, Panaji, Goa 403001, India",
+    href: undefined,
+  },
 ];
 
 export function Contact() {
@@ -29,10 +74,11 @@ export function Contact() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const val = (key: string) => ((data.get(key) as string) || "").trim() || "—";
+    const val = (key: string) =>
+      ((data.get(key) as string) || "").trim() || "—";
 
     const text = [
-      "*New FireShield Demo Request*",
+      "*New Avani Skyops Demo Request*",
       "",
       `*Name:* ${val("name")}`,
       `*Department:* ${val("department")}`,
@@ -59,11 +105,11 @@ export function Contact() {
                 Request Demo
               </span>
               <h2 className="mt-4 text-2xl font-bold text-white md:text-3xl">
-                Bring FireShield to your department
+                Bring Avani Skyops to your department
               </h2>
               <p className="mt-2 text-sm text-slate-400">
-                Tell us about your team and we&apos;ll arrange a live walkthrough
-                of the command dashboard.
+                Tell us about your team and we&apos;ll arrange a live
+                walkthrough of the command dashboard.
               </p>
 
               {submitted ? (
@@ -131,7 +177,12 @@ export function Contact() {
                       className="w-full resize-none rounded-lg border border-white/10 bg-base-800/60 px-3.5 py-2.5 text-sm text-white placeholder:text-slate-600 transition-colors focus:border-ember/50 focus:outline-none focus:ring-1 focus:ring-ember/30"
                     />
                   </div>
-                  <Button type="submit" variant="primary" size="lg" className="w-full">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="lg"
+                    className="w-full"
+                  >
                     Send via WhatsApp
                     <MessageCircle className="h-4 w-4" />
                   </Button>

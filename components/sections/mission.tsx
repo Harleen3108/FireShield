@@ -25,7 +25,7 @@ export function Mission() {
               <div className="relative overflow-hidden rounded-2xl border border-white/10">
                 <div className="relative aspect-[3/2]">
                   <Image
-                    src="/img/FireShield.webp"
+                    src="/img/fire-team.webp"
                     alt="Indian Fire & Rescue Services team in training"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -58,7 +58,7 @@ export function Mission() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-4 text-base leading-relaxed text-slate-400">
-                FireShield isn&apos;t built in a lab and handed over. It&apos;s
+                Avani Skyops isn&apos;t built in a lab and handed over. It&apos;s
                 shaped with serving fire officers — so every screen, alert, and
                 recommendation reflects how response actually works on the
                 ground.

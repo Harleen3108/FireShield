@@ -15,7 +15,7 @@ export function Logo({
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <Image
         src="/img/logo-badge.png"
-        alt="FireShield logo"
+        alt="Avani Skyops logo"
         width={726}
         height={637}
         priority
@@ -27,7 +27,7 @@ export function Logo({
           textSize,
         )}
       >
-        Fire<span className="text-ember">Shield</span>
+        Avani <span className="text-ember">Skyops</span>
       </span>
     </span>
   );

@@ -68,8 +68,10 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
           <p className="text-sm text-slate-500">
-            © 2026 FireShield. A{" "}
-            <span className="font-medium text-india-saffron">Make in India</span>{" "}
+            © 2026 Avani Skyops. A{" "}
+            <span className="font-medium text-india-saffron">
+              Make in India
+            </span>{" "}
             initiative.
           </p>
           <div className="flex items-center gap-2 text-xs text-slate-500">
@@ -81,7 +83,7 @@ export function Footer() {
         </div>
         <p className="mt-6 text-center text-[11px] text-slate-600">
           Imagery courtesy of Wikimedia Commons contributors — illustrative
-          placeholders pending licensed FireShield photography.
+          placeholders pending licensed Avani Skyops photography.
         </p>
       </div>
     </footer>

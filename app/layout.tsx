@@ -19,7 +19,7 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  title: "FireShield — AI-Powered Fire Response Platform",
+  title: "Avani Skyops — AI-Powered Fire Response Platform",
   description:
     "End-to-end fire detection, drone deployment & suppression platform built for India's fire departments. Developed in partnership with Goa Fire & Emergency Services.",
   keywords: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "Make in India",
   ],
   openGraph: {
-    title: "FireShield — AI-Powered Fire Response",
+    title: "Avani Skyops — AI-Powered Fire Response",
     description:
       "Faster. Smarter. Safer. AI fire detection, drone deployment & suppression for India's fire departments.",
     type: "website",

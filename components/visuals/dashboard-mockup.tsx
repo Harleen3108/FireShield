@@ -13,9 +13,27 @@ import {
 import { GisMap } from "./gis-map";
 
 const incidents = [
-  { id: "GA-2041", area: "Mollem Ghat", level: "Critical", color: "text-alert", dot: "bg-alert" },
-  { id: "GA-2038", area: "Valpoi Forest", level: "Active", color: "text-ember", dot: "bg-ember" },
-  { id: "GA-2035", area: "Canacona Hills", level: "Monitoring", color: "text-sky-400", dot: "bg-sky-400" },
+  {
+    id: "GA-2041",
+    area: "Mollem Ghat",
+    level: "Critical",
+    color: "text-alert",
+    dot: "bg-alert",
+  },
+  {
+    id: "GA-2038",
+    area: "Valpoi Forest",
+    level: "Active",
+    color: "text-ember",
+    dot: "bg-ember",
+  },
+  {
+    id: "GA-2035",
+    area: "Canacona Hills",
+    level: "Monitoring",
+    color: "text-sky-400",
+    dot: "bg-sky-400",
+  },
 ];
 
 const telemetry = [
@@ -46,7 +64,7 @@ export function DashboardMockup() {
               <span className="h-2.5 w-2.5 rounded-full bg-india-green/70" />
             </span>
             <span className="ml-2 text-xs font-medium text-slate-400">
-              FireShield Command · Goa
+              Avani Skyops Command · Goa
             </span>
           </div>
           <span className="flex items-center gap-1.5 rounded-full bg-india-green/10 px-2.5 py-1 text-[10px] font-semibold text-india-green">
@@ -66,7 +84,8 @@ export function DashboardMockup() {
               </div>
               <div className="absolute bottom-2 left-2.5 flex flex-wrap gap-x-2 gap-y-0.5 text-[9px] text-slate-300">
                 <span className="flex items-center gap-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-alert" /> Critical
+                  <span className="h-1.5 w-1.5 rounded-full bg-alert" />{" "}
+                  Critical
                 </span>
                 <span className="flex items-center gap-1">
                   <span className="h-1.5 w-1.5 rounded-full bg-ember" /> Active
@@ -115,12 +134,18 @@ export function DashboardMockup() {
                     <span className="whitespace-nowrap text-[11px] font-semibold text-white">
                       {inc.id}
                     </span>
-                    <span className={`flex items-center gap-1 whitespace-nowrap text-[9px] font-medium sm:text-[10px] ${inc.color}`}>
-                      <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${inc.dot}`} />
+                    <span
+                      className={`flex items-center gap-1 whitespace-nowrap text-[9px] font-medium sm:text-[10px] ${inc.color}`}
+                    >
+                      <span
+                        className={`h-1.5 w-1.5 shrink-0 rounded-full ${inc.dot}`}
+                      />
                       {inc.level}
                     </span>
                   </div>
-                  <div className="mt-0.5 truncate text-[10px] text-slate-500">{inc.area}</div>
+                  <div className="mt-0.5 truncate text-[10px] text-slate-500">
+                    {inc.area}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -133,7 +158,10 @@ export function DashboardMockup() {
               </div>
               <div className="mt-2 space-y-1.5">
                 {telemetry.map((t) => (
-                  <div key={t.label} className="flex items-center justify-between gap-2">
+                  <div
+                    key={t.label}
+                    className="flex items-center justify-between gap-2"
+                  >
                     <span className="flex items-center gap-1.5 text-[10px] text-slate-500">
                       <t.icon className="h-3 w-3 shrink-0" />
                       {t.label}
